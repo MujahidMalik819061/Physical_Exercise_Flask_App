@@ -1,5 +1,5 @@
 import joblib
-from flask import Flask, render_template, request
+from flask import Flask, render_templates, request
 import pickle
 import numpy as np
 import pandas as pd
@@ -9,11 +9,11 @@ filename = 'models.pkl'
 classifier = pickle.load(open(filename,'rb'))
 model = pickle.load(open('models.pkl','rb'))
 
-app = Flask(_name_,template_folder='Template')
+app = Flask(_name_,templates_folder='Templates')
 
 @app.route('/',methods=['GET'])
 def index():
-    return render_template('index.html')
+    return render_templates('index.html')
 
 @app.route('/predict-value', methods=['POST'])
 def predict_value():
